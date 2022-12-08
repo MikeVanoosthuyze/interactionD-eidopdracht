@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="img/Logo.svg">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/screen.css">
+    <script src="script/app.js"></script>
+
+    <title>Eindproject interaction design</title>
+</head>
+
+<body id="popup">
+
+    <header class="c-header">
+
+        <div class="c-header__logo">
+            <img src="img/Logo.svg" alt="">
+        </div>
+        <ul class="c-header-filter o-list">
+            <li class="c-header-filter__item c-header-filter__item--first"><button class="o-button-reset js-filter-items" id="all">All</button></li>
+            <li class="c-header-filter__item"><button class="o-button-reset js-filter-items" id="low">Low calories</button></li>
+            <li class="c-header-filter__item c-header-filter__item--last"><button class="o-button-reset js-filter-items" id="high">High calories</button></li>
+        </ul>
+
+
+        <div class="c-header__title">
+            <h1>Here you can find recipes with <span>many</span> or with<span> less calories.</span></h1>
+        </div>
+        <div class="c-header__img">
+            <img src="img/groenten.svg" alt=""/>
+        </div>
+
+    </header>
+
+    <main class="c-main" id="js-cards"></main>
+
+    <div class="js-overlay"></div>
+
+    <section class="c-popup c-popup-hidden js-popup">
+
+
+
+        <div class="c-popup-header">
+
+            <svg class="c-popup__button js-popup-button" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                viewBox="0 0 51 51">
+                <g id="Group_19" data-name="Group 19" transform="translate(-1276 -275)">
+                    <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(1276 275)" fill="#c28854"
+                        stroke="#fff1e4" stroke-width="3">
+                        <circle cx="25.5" cy="25.5" r="25.5" stroke="none" />
+                        <circle cx="25.5" cy="25.5" r="24" fill="none" />
+                    </g>
+                    <g id="Group_18" data-name="Group 18" transform="translate(1108 -254.457)">
+                        <rect id="Rectangle_15" data-name="Rectangle 15" width="4.631" height="34.944" rx="2"
+                            transform="matrix(0.695, 0.719, -0.719, 0.695, 204.409, 541.457)" fill="#fff1e4" />
+                        <rect id="Rectangle_16" data-name="Rectangle 16" width="4.631" height="34.944" rx="2"
+                            transform="matrix(-0.695, 0.719, -0.719, -0.695, 207.626, 565.731)" fill="#fff1e4" />
+                    </g>
+                </g>
+            </svg>
+
+        </div>
+
+
+        <div class="c-popup__content">
+            <h2 class="c-popup__title js-popup__title"></h2>
+            <img class=" js-popup__img c-popup__img" src="">
+            <p class="c-popup__summary js-popup__summary"></p>
+            
+            <div class="c-popup__charts c-popup__charts--protein">
+                <canvas id="proteinChart"></canvas>
+            </div>
+            <div class="c-popup__charts c-popup__charts--carbs">
+                <canvas id="carbsChart"></canvas>
+            </div>
+            <div class="c-popup__charts c-popup__charts--fat">
+                <canvas id="fatChart"></canvas>
+            </div>
+            <div class="c-popup__charts c-popup__charts--calories">
+                <canvas id="caloriesChart"></canvas>
+            </div>
+            <div class="c-popup__charts c-popup__charts--sugar">
+                <canvas id="sugarChart"></canvas>
+            </div>
+        </div>
+
+
+
+
+    </section>
+
+    <footer class="c-footer">
+        <div class="c-footer__logo">
+            <img src="img/Howest_hogeschool-logo_RGB-WIT+LIJNTJES.svg" alt=""/>
+        </div>
+        <div class="c-footer__text">
+            <p>School project, <br> door Mike Vanoosthuyze</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
