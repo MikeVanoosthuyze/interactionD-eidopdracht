@@ -1,5 +1,5 @@
 let chart, chart2, chart3, chart4, chart5;
-const ENDPOINT_RECIPES = `https://recipesfa.azurewebsites.net/api/eindproject/recipes`;
+const ENDPOINT_RECIPES = `https://fa2-food.azurewebsites.net/api/eindproject/recipes`;
 
 // Close Modal window
 const closePopup = async () => {
@@ -45,7 +45,7 @@ const ShowRecipeDetail = async (data) => {
     // Variabelen van voedingstoffen wat je mag per dag en wat er in het recept zit.
 
     var ProteinInRecipe = r.nutrients[4].amount;
-    var DailyNeedProtein = 80;
+    var DailyNeedProtein = 70;
 
     var SugarInRecipe = r.nutrients[3].amount;
     var DailyNeedsSugar = 40;
@@ -57,15 +57,60 @@ const ShowRecipeDetail = async (data) => {
     var DailyNeedsCalories = 2000;
 
     var FatInRecipe = r.nutrients[1].amount;
-    var DailyNeedsFat = 111;
+    var DailyNeedsFat = 80;
+
+    var controlColorProtein = "";
+    var controlColorSugar = "";
+    var controlColorCarbs = "";
+    var controlColorCal = "";
+    var controlColorFat = "";
+
+    if (ProteinInRecipe > 70) {
+      controlColorProtein = "#BC4B4B";
+    } else {
+      controlColorProtein = "#48914D";
+    }
+    if (SugarInRecipe > 40) {
+      controlColorSugar = "#BC4B4B";
+    } else {
+      controlColorSugar = "#48914D";
+    }
+    if (CarbsInRecipe > 300) {
+      controlColorCarbs = "#BC4B4B";
+    } else {
+      controlColorCarbs = "#48914D";
+    }
+    if (CaloriesInRecipe > 2000) {
+      controlColorCal = "#BC4B4B";
+    } else {
+      controlColorCal = "#48914D";
+    }
+    if (FatInRecipe > 80) {
+      controlColorFat = "#BC4B4B";
+    } else {
+      controlColorFat = "#48914D";
+    }
 
     // Update de chart met de nieuwe data
     if ((chart, chart2, chart3, chart4, chart5)) {
+      // Update de data van de chart
       chart.data.datasets[0].data = [ProteinInRecipe, DailyNeedProtein];
+      chart.data.datasets[0].backgroundColor = [controlColorProtein, "#864A15"];
+      // Update de data van de chart2
       chart2.data.datasets[0].data = [CarbsInRecipe, DailyNeedsCarbs];
+      chart2.data.datasets[0].backgroundColor = [controlColorCarbs, "#864A15"];
+
+      // Update de data van de chart3
       chart3.data.datasets[0].data = [FatInRecipe, DailyNeedsFat];
+      chart3.data.datasets[0].backgroundColor = [controlColorFat, "#864A15"];
+
+      // Update de data van de chart4
       chart4.data.datasets[0].data = [CaloriesInRecipe, DailyNeedsCalories];
+      chart4.data.datasets[0].backgroundColor = [controlColorCal, "#864A15"];
+
+      // Update de data van de chart5
       chart5.data.datasets[0].data = [SugarInRecipe, DailyNeedsSugar];
+      chart5.data.datasets[0].backgroundColor = [controlColorSugar, "#864A15"];
       // Return de update van de chart
       return (
         chart.update(),
@@ -85,7 +130,7 @@ const ShowRecipeDetail = async (data) => {
         datasets: [
           {
             data: [ProteinInRecipe, DailyNeedProtein],
-            backgroundColor: ["#48914D", "#864A15"],
+            backgroundColor: [controlColorProtein, "#864A15"],
           },
         ],
       },
@@ -101,7 +146,7 @@ const ShowRecipeDetail = async (data) => {
         datasets: [
           {
             data: [CarbsInRecipe, DailyNeedsCarbs],
-            backgroundColor: ["#48914D", "#864A15"],
+            backgroundColor: [controlColorCarbs, "#864A15"],
           },
         ],
       },
@@ -118,7 +163,7 @@ const ShowRecipeDetail = async (data) => {
         datasets: [
           {
             data: [FatInRecipe, DailyNeedsFat],
-            backgroundColor: ["#48914D", "#864A15"],
+            backgroundColor: [controlColorFat, "#864A15"],
           },
         ],
       },
@@ -134,7 +179,7 @@ const ShowRecipeDetail = async (data) => {
         datasets: [
           {
             data: [CaloriesInRecipe, DailyNeedsCalories],
-            backgroundColor: ["#48914D", "#864A15"],
+            backgroundColor: [controlColorCal, "#864A15"],
           },
         ],
       },
@@ -151,7 +196,7 @@ const ShowRecipeDetail = async (data) => {
         datasets: [
           {
             data: [SugarInRecipe, DailyNeedsSugar],
-            backgroundColor: ["#48914D", "#864A15"],
+            backgroundColor: [controlColorSugar, "#864A15"],
           },
         ],
       },
@@ -270,10 +315,37 @@ const filterByCalories = (data) => {
     item.addEventListener("click", (e) => {
       console.log(e.currentTarget.id);
       if (e.currentTarget.id === "high") {
+        document
+          .getElementById("high")
+          .classList.add("c-header-filter__btn--active");
+        document
+          .getElementById("low")
+          .classList.remove("c-header-filter__btn--active");
+        document
+          .getElementById("all")
+          .classList.remove("c-header-filter__btn--active");
         ShowHighRecipes(data);
       } else if (e.currentTarget.id === "low") {
+        document
+          .getElementById("high")
+          .classList.remove("c-header-filter__btn--active");
+        document
+          .getElementById("low")
+          .classList.add("c-header-filter__btn--active");
+        document
+          .getElementById("all")
+          .classList.remove("c-header-filter__btn--active");
         ShowLowRecipes(data);
       } else if (e.currentTarget.id === "all") {
+        document
+          .getElementById("high")
+          .classList.remove("c-header-filter__btn--active");
+        document
+          .getElementById("low")
+          .classList.remove("c-header-filter__btn--active");
+        document
+          .getElementById("all")
+          .classList.add("c-header-filter__btn--active");
         ShowRecipes(data);
       }
     });

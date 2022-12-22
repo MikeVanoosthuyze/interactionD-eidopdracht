@@ -23,11 +23,12 @@
         <div class="c-header__logo">
             <img src="img/Logo.svg" alt="">
         </div>
-        <ul class="c-header-filter o-list">
-            <li class="c-header-filter__item c-header-filter__item--first"><button class="o-button-reset js-filter-items" id="all">All</button></li>
-            <li class="c-header-filter__item"><button class="o-button-reset js-filter-items" id="low">Low calories</button></li>
-            <li class="c-header-filter__item c-header-filter__item--last"><button class="o-button-reset js-filter-items" id="high">High calories</button></li>
-        </ul>
+
+        <div class="c-header-filter o-list js-filter">
+            <button class="c-header-filter__btn c-header-filter__btn--active c-header-filter__btn--first o-button-reset js-filter-items" id="all">All</button>
+            <button class="c-header-filter__btn o-button-reset js-filter-items" id="low">Low calories</button>
+            <button class="c-header-filter__btn c-header-filter__btn--last o-button-reset js-filter-items" id="high">High calories</button>
+        </div>
 
 
         <div class="c-header__title">
@@ -71,22 +72,28 @@
 
         <div class="c-popup__content">
             <h2 class="c-popup__title js-popup__title"></h2>
-            <img class=" js-popup__img c-popup__img" src="">
+            <img class=" js-popup__img c-popup__img" src="" alt="Foto van gerecht">
             <p class="c-popup__summary js-popup__summary"></p>
             
+            
             <div class="c-popup__charts c-popup__charts--protein">
+                <div class="c-popup__label">Protein</div>
                 <canvas id="proteinChart"></canvas>
             </div>
             <div class="c-popup__charts c-popup__charts--carbs">
+                <div class="c-popup__label">Carbs</div>
                 <canvas id="carbsChart"></canvas>
             </div>
             <div class="c-popup__charts c-popup__charts--fat">
+                <div class="c-popup__label">Fat</div>
                 <canvas id="fatChart"></canvas>
             </div>
             <div class="c-popup__charts c-popup__charts--calories">
+                <div class="c-popup__label">Calories</div>
                 <canvas id="caloriesChart"></canvas>
             </div>
             <div class="c-popup__charts c-popup__charts--sugar">
+                <div class="c-popup__label">Sugar</div>
                 <canvas id="sugarChart"></canvas>
             </div>
         </div>
@@ -98,7 +105,7 @@
 
     <footer class="c-footer">
         <div class="c-footer__logo">
-            <img src="img/Howest_hogeschool-logo_RGB-WIT+LIJNTJES.svg" alt=""/>
+            <img src="img/Howest_hogeschool-logo_RGB-WIT+LIJNTJES.svg" alt="Logo howest"/>
         </div>
         <div class="c-footer__text">
             <p>School project, <br> door Mike Vanoosthuyze</p>
